@@ -59,7 +59,8 @@ git push --force
 
 go api
 -------------------------
-command-go mod init
+command-go mod init main
+change version to 1.25
 
 create main.go file--code in api code file
 
