@@ -1,0 +1,105 @@
+CICDPipeline/
+Build Steps
+
+1st Build
+
+docker build --no-cache -t cicd-image .
+
+2nd Build
+
+docker rm -f cicd-container || exit 0
+docker run -d -p 8081:80 --name cicd-container cicd-image
+
+---------------------------------------------------------------------------------
+Jenkins/
+Build Steps
+
+1st Build 
+
+docker build --no-cache -t jenkins-image .
+
+2nd Build
+
+docker rm -f jenkins-container || exit 0
+docker run -d -p 8082:80 --name jenkins-container jenkins-image
+
+----------------------------------------------------------------------------------
+ThankYou/
+Build Steps
+
+1st Build
+
+docker build --no-cache -t thankyou-image .
+
+2nd Build
+
+docker rm -f thankyou-container || exit 0
+docker run -d -p 8083:80 --name thankyou-container thankyou-image
+
+
+
+
+Git remove file 
+
+After deleting the file and pushing it go to the removefile folder cmd not in the remove123.git cmd
+----------------------------
+Step 10: Create a Mirror Clone 
+Command: 
+git clone --mirror<repository-url>remove123.git
+
+Step 11: Run BFG Command 
+Command: 
+java -jar bfg.jar --delete-files demo.html --no-blob-protection remove123.git
+
+Step 12: Force Push the Cleaned Repository 
+git push --force
+
+
+
+
+go api
+-------------------------
+command-go mod init
+
+create main.go file--code in api code file
+
+command-go run main.go
+
+1) Click on “New Request Button” 
+2) Then Change the Method from “Get” ❌    TO    “Post” ✅ 
+3) Paste the url http://localhost:8050/create 
+4) Click on “Body”  ---->  “JSON”  
+5) Pass the data you want [key names must be the same “names” & “age” because they 
+defined according to code] [value can be anything] in jason format. 
+6) Click on Send Button. 
+7) On Output window all the information such as “Status : 200 OK”, “Size : 24 Bytes” will be 
+visible and “User Added” this will indicate that data is send. 
+8) A new Post Request is Created. 
+
+
+after this create git repo and deploy using render
+
+
+
+in idle
+## ----------------- To Get the Data from the Browser ---------------
+import requests
+url = "https://go-api-3688.onrender.com/users"
+response = requests.get(url)
+print(response.json())
+
+
+
+
+
+##----------------- To Post the Data to the Browser ---------------
+#import requests
+#url = "https://go-api-3688.onrender.com/create"
+#data = {
+ #   "name": "Peter",
+  #  "age": 28
+#}
+#response = requests.post(url, json=data)
+#print(response.json())
+#print("User Added Sccessfully")
+
